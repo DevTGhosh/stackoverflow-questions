@@ -1,5 +1,5 @@
 //Added types for all key value pairs in the JSON object from API call
-interface Owner {
+export interface Owner {
   reputation: number;
   user_id: number;
   user_type: string;
@@ -27,4 +27,11 @@ export interface Item {
 // Root Interface
 export interface ApiResponse {
   items: Item[];
+  has_more: boolean;
+  quota_max: number;
+  quota_remaining: number;
+}
+export interface PaginatedApiResponse {
+  data: ApiResponse;
+  nextPageNumber: number;
 }
