@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useInfiniteQuery } from "react-query";
 import { Box, Stack, Spinner, Text } from "@chakra-ui/core";
+import dayjs from "dayjs";
 import { getStackQuestions } from "../../api/stackOverflowApi";
 import { Item, PaginatedApiResponse } from "../../api/stackOverflowApiType";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver";
@@ -63,7 +64,9 @@ export default function QuestionList() {
                   <Stack spacing={8} ref={stackDiv}>
                     <BoxWithModal
                       question={item.title}
-                      date={item.creation_date.toString()}
+                      date={dayjs
+                        .unix(item.creation_date)
+                        .format("DD/MM/YYYY HH:MM:ss")}
                       author={item.owner.display_name}
                       link={item.link}
                     />
