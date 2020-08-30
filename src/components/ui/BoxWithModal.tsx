@@ -38,7 +38,7 @@ export default function BoxWithModal(props: BoxWithModalProps) {
       >
         <Text fontWeight={700}>{props.question}</Text>
         <Box d="flex" alignItems="flex-start" flexDirection="column">
-          <Text mt={4}>Created by: {props.author}</Text>
+          <Text mt={4}>Author: {props.author}</Text>
           <Text mt={1}>Created on: {props.date}</Text>
         </Box>
       </Box>
