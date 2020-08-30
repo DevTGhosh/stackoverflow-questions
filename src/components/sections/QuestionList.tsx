@@ -35,12 +35,14 @@ export default function QuestionList() {
   });
 
   const spinnerDiv = useRef<HTMLElement>(null);
+  const stackDiv = useRef<HTMLDivElement>(null);
 
   // This hook takes in the following
   // target ref,
   // onIntersect:  function to be called when the ref is on sreen
   //  enabled: only calls the function if there are more Items to be fetched
   useIntersectionObserver({
+    root: stackDiv,
     target: spinnerDiv,
     onIntersect: fetchMore,
     enabled: canFetchMore,
@@ -58,12 +60,14 @@ export default function QuestionList() {
               <React.Fragment key={i}>
                 {/* Displays result of 1 api call */}
                 {page?.data?.items?.map((item: Item) => (
-                  <BoxWithModal
-                    question={item.title}
-                    date={item.creation_date.toString()}
-                    author={item.owner.display_name}
-                    link={item.link}
-                  />
+                  <Stack spacing={8} ref={stackDiv}>
+                    <BoxWithModal
+                      question={item.title}
+                      date={item.creation_date.toString()}
+                      author={item.owner.display_name}
+                      link={item.link}
+                    />
+                  </Stack>
                 ))}
               </React.Fragment>
             ))}

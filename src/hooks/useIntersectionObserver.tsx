@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 interface IntersectionObserver {
-  root?: any;
+  root?: React.MutableRefObject<HTMLDivElement | null>;
   target?: React.MutableRefObject<HTMLElement | null>;
   onIntersect: any;
   enabled?: boolean | undefined;
@@ -16,7 +16,7 @@ export default function useIntersectionObserver({
   target,
   onIntersect,
   threshold = 1.0,
-  rootMargin = "0px",
+  rootMargin = "600px",
   enabled = true,
 }: IntersectionObserver) {
   useEffect(() => {
