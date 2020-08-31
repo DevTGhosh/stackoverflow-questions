@@ -35,7 +35,7 @@ export default function QuestionList() {
     staleTime: 1000 * 60 * 60 * 24 * 365,
   });
 
-  const spinnerDiv = useRef<HTMLElement>(null);
+  const spinnerDiv = useRef<HTMLDivElement>(null);
   const stackDiv = useRef<HTMLDivElement>(null);
 
   // This hook takes in the following
@@ -62,6 +62,7 @@ export default function QuestionList() {
                 {/* Displays result of 1 api call */}
                 {page?.data?.items?.map((item: Item) => (
                   <Stack spacing={8} ref={stackDiv}>
+                    {}
                     <BoxWithModal
                       question={item.title}
                       date={dayjs
@@ -69,6 +70,7 @@ export default function QuestionList() {
                         .format("DD/MM/YYYY HH:MM:ss")}
                       author={item.owner.display_name}
                       link={item.link}
+                      body={item.body}
                     />
                   </Stack>
                 ))}

@@ -23,6 +23,7 @@ export interface Item {
   content_license: string;
   link: string;
   title: string;
+  body: string;
 }
 // Root Interface
 export interface ApiResponse {

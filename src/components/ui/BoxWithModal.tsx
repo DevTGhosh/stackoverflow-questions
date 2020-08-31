@@ -12,12 +12,15 @@ import {
   ModalBody,
   useDisclosure,
 } from "@chakra-ui/core";
+import { SlideFade } from "@chakra-ui/transition";
+import ModalBodyContent from "./ModalBodyContent";
 
 interface BoxWithModalProps {
   question: string;
   author: string;
   date: string;
   link: string;
+  body: string;
 }
 
 export default function BoxWithModal(props: BoxWithModalProps) {
@@ -42,26 +45,30 @@ export default function BoxWithModal(props: BoxWithModalProps) {
           <Text mt={1}>Created on: {props.date}</Text>
         </Box>
       </Box>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="inside">
         <ModalOverlay>
-          <ModalContent>
-            <ModalHeader>Question?</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <Text>{props.question}</Text>
-            </ModalBody>
+          <SlideFade initialOffset="20px" timeout={150} in={isOpen}>
+            {(styles) => (
+              <ModalContent style={styles} maxWidth="60%">
+                <ModalHeader>{props.question}</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  <ModalBodyContent body={props.body} />
+                </ModalBody>
 
-            <ModalFooter>
-              <Button
-                as="a"
-                colorScheme="blue"
-                target="_blank"
-                href={props.link}
-              >
-                Go to Stackoverflow
-              </Button>
-            </ModalFooter>
-          </ModalContent>
+                <ModalFooter>
+                  <Button
+                    as="a"
+                    colorScheme="blue"
+                    target="_blank"
+                    href={props.link}
+                  >
+                    Go to Stackoverflow
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            )}
+          </SlideFade>
         </ModalOverlay>
       </Modal>
     </>
