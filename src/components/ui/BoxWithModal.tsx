@@ -47,7 +47,7 @@ export default function BoxWithModal(props: BoxWithModalProps) {
       </Box>
       <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="inside">
         <ModalOverlay>
-          <SlideFade initialOffset="20px" timeout={150} in={isOpen}>
+          <SlideFade initialOffset="100px" timeout={500} in={isOpen}>
             {(styles) => (
               <ModalContent style={styles} maxWidth="60%">
                 <ModalHeader>{props.question}</ModalHeader>
