@@ -1,6 +1,7 @@
 # Stack Overflow Questions List
 
-Pings the stackoverflow api and creates an infinite scroll for you to parse the questions
+Pings the stackoverflow api and creates an infinite scroll for you to parse the questions. You can click on each question to reveal the description of the question with custom styling. You can also toggle dark mode with the button at right top.
+
 Project was created with Create-React-App, Chakra UI, React-Query, DayJs and deployed on Vercel at https://stackoverflow-questions.vercel.app/
 
 # How to run this App
