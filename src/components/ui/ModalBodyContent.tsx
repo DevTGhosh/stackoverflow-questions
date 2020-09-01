@@ -84,7 +84,7 @@ export default function ModalBodyContent(props: ModalBodyContentProps) {
       processNode: function (node: Node, children: Node, index: Node) {
         const path = node?.attribs?.["href"];
         return (
-          <Link href={path} isExternal>
+          <Link color="blue.500" href={path} isExternal>
             {children}
             <ExternalLinkIcon mx="2px" mb="7px" />
           </Link>
